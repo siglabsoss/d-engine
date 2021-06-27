@@ -120,7 +120,15 @@ module d_engine
    wire [31:0]               dengine_func1MinThreshold;
    wire [31:0]               dengine_func1MaxThreshold;
 
-// `ifdef RISCV
+
+// NO_RISCV_DEF is only used by d-engine/sim
+// we don't use it in any other  v e r i l a t o r  sims
+
+`ifdef NO_RISCV_DEF
+   assign dengine_reset = 0;
+`endif
+   
+`ifndef NO_RISCV_DEF
    
 /* verilator lint_off PINMISSING */
    generate if (!NO_RISCV) begin: VexRiscv
@@ -164,8 +172,8 @@ module d_engine
          //.io_vmemBus_cmd_payload_address(),
          //.io_vmemBus_cmd_payload_data(),
          //.io_vmemBus_cmd_payload_mask(),
-         .io_vmemBus_rsp_valid(1'b1),
-         .io_vmemBus_rsp_payload_data(32'hDEADBEEF),
+         .io_vmemBus_rsp_valid(1'b0),
+         // .io_vmemBus_rsp_payload_data(32'hDEADBEEF),
          
          //.xbaseband_cmd_valid(),
          .xbaseband_cmd_ready(1'b1),
@@ -299,7 +307,7 @@ module d_engine
         .i1_data    (dBus_rsp_data)
         );
 
-// `endif
+`endif
 
    wire                  ringbus_0_buf_empty;
 
@@ -327,7 +335,7 @@ module d_engine
       );
 
    /* verilator lint_off PINMISSING */
-   d_process d_process_0
+   d_process_single d_process_single_0
      (.t_data(t0_data),
       .t_last(t0_last),
       .t_valid(t0_valid),
@@ -338,12 +346,13 @@ module d_engine
       .i_valid(i0_valid),
       .i_ready(i0_ready),
 
-      .func0(func0),
-      .func1(func1),
+      .dengine_reset(dengine_reset),
+      // .func0(func0),
+      // .func1(func1),
       .func0MinThreshold(dengine_func0MinThreshold),
       .func0MaxThreshold(dengine_func0MaxThreshold),
-      .func1MinThreshold(dengine_func1MinThreshold),
-      .func1MaxThreshold(dengine_func1MaxThreshold),
+      // .func1MinThreshold(dengine_func1MinThreshold),
+      // .func1MaxThreshold(dengine_func1MaxThreshold),
       //.sat_detect(),
 
       .clk(clk),
