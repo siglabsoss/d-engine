@@ -54,7 +54,7 @@ VERILATOR_FLAGS += --assert
 #VERILATOR_FLAGS += --coverage
 
 # Disable Warnings
-VERILATOR_FLAGS += -Wno-DECLFILENAME -Wno-WIDTH -Wno-UNUSED -Wno-UNDRIVEN
+VERILATOR_FLAGS += -Wno-DECLFILENAME -Wno-WIDTH -Wno-UNUSED -Wno-UNDRIVEN +define+NO_RISCV_DEF
 # MULTITHREADED
 #VERILATOR_FLAGS += --threads 2
 # Run Verilator in debug mode

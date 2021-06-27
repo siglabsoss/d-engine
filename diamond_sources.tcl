@@ -21,7 +21,11 @@ set abs_path [ file dirname [ file normalize [ info script ] ] ]; # ABSOLUTE PAT
 # DON'T FORGET the ; at the end of the path to your pre-compiled IP .ngo file directory
 
 prj_src add $abs_path/rtl/d_engine.sv
-prj_src add $abs_path/rtl/d_process.sv
+prj_src add $abs_path/rtl/d_process_single.sv
 prj_src add $abs_path/rtl/vcordic.sv
-prj_src add $abs_path/rtl/reciprocal/hdl/reciprocal.v
+prj_src add $abs_path/rtl/vcordic_rcordic_chain.sv
 prj_src add $abs_path/rtl/elastic-buffer/eb15.sv
+
+# used for the original 2 function mode
+# prj_src add $abs_path/rtl/d_process.sv
+# prj_src add $abs_path/rtl/reciprocal/hdl/reciprocal.v
