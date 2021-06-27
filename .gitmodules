@@ -1,0 +1,3 @@
+[submodule "rtl/elastic-buffer"]
+	path = rtl/elastic-buffer
+	url = git@github.com:ameetgohil/elastic-buffer.git
