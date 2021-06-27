@@ -1,0 +1,11 @@
+// This file typically lists flags required by a large project, e.g. include directories
++librescan +libext+.v+.sv+.vh+.svh -y ../rtl/
++librescan +libext+.v+.sv+.vh+.svh -y ../rtl/elastic-buffer/
++librescan +libext+.v+.sv+.vh+.svh -y ../rtl/reciprocal/hdl/
++librescan +libext+.v+.sv+.vh+.svh -y ../../q-engine/hdl/
++librescan +libext+.v+.sv+.vh+.svh -y ../../q-engine/hdl/ring_bus/
++librescan +libext+.v+.sv+.vh+.svh -y ../../q-engine/hdl/nco/
++librescan +libext+.v+.sv+.vh+.svh -y ../../riscv-baseband/hdl/generated/
++librescan +libext+.v+.sv+.vh+.svh -y ../../ip-library/fwft_fifos/sc_fifo/hdl/
+
+

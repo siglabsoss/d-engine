@@ -1,0 +1,38 @@
+{
+  "name": "reciprocal",
+  "version": "0.1.0",
+  "description": "",
+  "main": "templates.js",
+  "scripts": {
+    "test": "npm run build ; npm run redot",
+    "lint": "eslint lib/ bin/",
+    "cprtl": "cp node_modules/reqack/rtl/eb*_ctrl.v hdl/",
+    "cpproject": "cp src/project.js hdl/",
+    "templer": "./bin/templer.js --source templates/ --output templates.js",
+    "burbulator": "../burbulator/burbulator gen -p ./hdl/project.js",
+    "build": "./bin/gen-reciprocal.js && npm run cprtl",
+    "vlint": "verilator +define+VERILATE=1 --lint-only hdl/datapath.v -Ihdl -Irtl",
+    "redot": "for i in hdl/*.dot; do dot -Tsvg \"$i\" > \"$i\".svg; done"
+  },
+  "author": "Ameet Gohil",
+  "private": true,
+  "license": "Signal Laboratories, Inc.",
+  "dependencies": {},
+  "devDependencies": {
+    "@drom/eslint-config": "^0.7.0",
+    "eslint": "latest",
+    "fs-extra": "latest",
+    "lodash": "latest",
+    "mathjs": "latest",
+    "reqack": "latest",
+    "yargs": "latest",
+    "fixed2float": "latest"
+  },
+  "eslintConfig": {
+    "extends": "@drom/eslint-config/eslint4/node4",
+    "rules": {
+      "no-console": 1,
+      "camelcase": 0
+    }
+  }
+}
