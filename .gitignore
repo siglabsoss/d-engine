@@ -1,0 +1,9 @@
+*~
+#*
+.#*
+*#
+npm_modules/
+obj_dir/
+sim/cppsrc/*
+rtl/reciprocal/node_modules/
+rtl/reciprocal/obj_dir/
